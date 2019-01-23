@@ -5,6 +5,7 @@ jobs:
       - image: kuronekomichael/flutter:stable
     steps:
       - checkout
+      - run: 'flutter packages get'
       - run: 'dartcop . | reviewdog -f=checkstyle -name=dartcop -reporter=github-pr-review'
 workflows:
   version: 2
