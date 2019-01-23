@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  lint:
+    docker:
+      - image: kuronekomichael/flutter:stable
+    steps:
+      - checkout
+      - run: 'dartcop . | reviewdog -f=checkstyle -name=dartcop -reporter=github-pr-review'
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - lint
